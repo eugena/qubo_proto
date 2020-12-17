@@ -50,7 +50,7 @@ qubo_proto.QSolver(
 ```
 You should get a list like this as a solution:
 ```python
-[1,0,0,1,1]
+[1, 0, 0, 1, 1]
 ```
 
 Testing
