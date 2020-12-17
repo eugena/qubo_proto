@@ -1,5 +1,5 @@
-QUBO prototype
-==============
+QUBO solving prototype
+======================
 
 [![License: GPL v3](https://img.shields.io/badge/license-GPL%20v3-blue.svg)](LICENSE)
 
@@ -25,6 +25,8 @@ In terminal:
 
 ```shell
 git clone https://github.com/eugena/qubo_proto.git
+
+cd qubo_proto
 
 virtualenv .qubo
 
