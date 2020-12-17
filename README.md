@@ -6,7 +6,7 @@ QUBO solving prototype
 This is a prototype for solving [QUBO](https://en.wikipedia.org/wiki/Quadratic_unconstrained_binary_optimization) problem
 using several backends.
 
-Now tested for Python 3.6, 3.7, 3.8.
+Currently, tested for Python 3.6, 3.7, 3.8.
 
 Features
 --------
