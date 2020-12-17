@@ -32,7 +32,7 @@ source .qubo/bin/activate
 
 pip install -r requirements_dev.txt
 
-cd
+python
 ````
 
 And in python:
