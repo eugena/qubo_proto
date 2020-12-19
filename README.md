@@ -65,6 +65,43 @@ You should get a list like this as a solution:
 More cases
 ----------
 
+```python
+import dimod
+
+import qubo_proto
+
+# dimod.BinaryQuadraticModel as input
+model = dimod.BinaryQuadraticModel(
+    {0: 1, 1: -1, 2: .5},
+    {(0, 1): .5, (1, 2): 1.5},
+    1.4,
+    dimod.Vartype.SPIN
+)
+
+# solution using Quantum computer
+result_q = qubo_proto.QSolver(
+    backend=qubo_proto.BACKEND_QUANTUM
+).solve(
+    qubo_proto.PROBLEM_QUBO,
+    data=model
+)
+
+# solution using Local simulator
+result_s = qubo_proto.QSolver(
+    backend=qubo_proto.BACKEND_LOCAL_SIMULATOR
+).solve(
+    qubo_proto.PROBLEM_QUBO,
+    data=model
+)
+
+# solution using classic backend
+result_c = qubo_proto.QSolver(
+    backend=qubo_proto.BACKEND_CLASSIC
+).solve(
+    qubo_proto.PROBLEM_QUBO,
+    data=model
+)
+```
 
 Testing
 -------
