@@ -38,14 +38,19 @@ class ProblemQUBO(ProblemSolver):
         """
         Solves the problem
         """
+        n_samples = kwargs.pop('n_samples', 1)
+
         sampler = self.backend.get_solver(qubo_proto.PROBLEM_QUBO)
 
         samples = sampler.sample(
             self.prepare_model(*args, **kwargs)
-        ).samples(n=1)  # the best one
+        ).samples(n=n_samples)
 
-        try:
-            solution = [v for k, v in samples[0].items()]
-        except IndexError:
-            solution = []
+        solution = []
+        for sample in samples:
+            solution.append([v for k, v in sample.items()])
+
+        if len(solution) == 1:
+            solution = solution[0]
+
         return solution
