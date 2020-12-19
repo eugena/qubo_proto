@@ -255,7 +255,7 @@ def test_constraint_satisfaction_problem():
     csp.add_constraint(
         lambda a, b, c: all(np.array(
             [a, b, c]
-        ).T.dot(np.random.rand(3, 3)) < np.random.rand(3)),
+        ).T.dot(np.random.rand(3, 3)) <= np.random.rand(3)),
         ['a', 'b', 'c'])
 
     result_csp = qubo_proto.QSolver(
