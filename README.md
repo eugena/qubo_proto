@@ -33,7 +33,13 @@ virtualenv .qubo
 source .qubo/bin/activate
 
 pip install -r requirements_dev.txt
+````
 
+Then fill tokens and endpoints in [dwave.conf](dwave.conf).
+
+
+Then:
+```shell
 python
 ````
 
@@ -47,7 +53,7 @@ qubo_proto.QSolver(
     backend=qubo_proto.BACKEND_QUANTUM
 ).solve(
     qubo_proto.PROBLEM_QUBO,
-    np.random.rand(5, 5)
+    data=np.random.rand(5, 5)
 )
 ```
 You should get a list like this as a solution:
