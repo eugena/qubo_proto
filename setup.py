@@ -6,9 +6,6 @@ from setuptools import setup, find_packages
 
 with open('README.rst') as readme_file:
     readme = readme_file.read()
-#
-# with open('HISTORY.rst') as history_file:
-#     history = history_file.read()
 
 requirements = [ ]
 
@@ -19,7 +16,7 @@ test_requirements = ['pytest>=3', ]
 setup(
     author="Eugena A. Mihailikova",
     author_email='eugena.mihailikova@gmail.com',
-    python_requires='>=3.5',
+    python_requires='>=3.6',
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',
         'Intended Audience :: Developers',
