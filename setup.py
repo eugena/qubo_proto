@@ -1,0 +1,47 @@
+#!/usr/bin/env python
+
+"""The setup script."""
+
+from setuptools import setup, find_packages
+
+with open('README.rst') as readme_file:
+    readme = readme_file.read()
+#
+# with open('HISTORY.rst') as history_file:
+#     history = history_file.read()
+
+requirements = [ ]
+
+setup_requirements = ['pytest-runner', ]
+
+test_requirements = ['pytest>=3', ]
+
+setup(
+    author="Eugena A. Mihailikova",
+    author_email='eugena.mihailikova@gmail.com',
+    python_requires='>=3.5',
+    classifiers=[
+        'Development Status :: 2 - Pre-Alpha',
+        'Intended Audience :: Developers',
+        'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
+        'Natural Language :: English',
+        'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.8',
+    ],
+    description="A prototype of QUBO and Ising problems solver",
+    install_requires=requirements,
+    license="GNU General Public License v3",
+    long_description=readme,
+    include_package_data=True,
+    keywords='qubo_proto',
+    name='qubo_proto',
+    packages=find_packages(include=['qubo_proto', 'qubo_proto.*']),
+    setup_requires=setup_requirements,
+    test_suite='tests',
+    tests_require=test_requirements,
+    url='https://github.com/eugena/qubo_proto',
+    version='0.1.0',
+    zip_safe=False,
+)
