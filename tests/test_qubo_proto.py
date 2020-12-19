@@ -96,7 +96,7 @@ def test_problem_unknown():
 
 def test_ising():
     """
-    Simple test function for ising problem
+    Simple test function for Ising problem
 
     When
         h = {0: -1, 1: -1}
@@ -116,7 +116,7 @@ def test_ising():
 
 def test_qubo():
     """
-    Simple test function for qubo
+    Simple test function for QUBO
     """
     result = qubo_proto.QSolver(
         backend=qubo_proto.BACKEND_LOCAL_SIMULATOR
@@ -217,6 +217,15 @@ def test_constraint_satisfaction_problem():
     """
     Checks Constraint Satisfaction Problems solving
     """
+
+    # Constraint 1
+    #
+    # for solution:
+    #   the element with index 0 must be less then
+    #   the element with index 1
+    #   and
+    #   the element with index 1 must be not equal to
+    #   the element with index 2
     csp = dwavebinarycsp.ConstraintSatisfactionProblem('BINARY')
     csp.add_constraint(operator.lt, [0, 1])
     csp.add_constraint(operator.ne, [1, 2])
@@ -228,8 +237,33 @@ def test_constraint_satisfaction_problem():
         backend=qubo_proto.BACKEND_LOCAL_SIMULATOR
     ).solve(
         qubo_proto.PROBLEM_QUBO,
-        data=dwavebinarycsp.stitch(csp)
+        data=dwavebinarycsp.stitch(csp)  # getting BinaryQuadraticModel
+                                         # as input
     )
 
     assert csp.check(result_csp)
 
+    # Constraint 2
+    #
+    # for solution s:
+    #   s * A <= b
+    # where
+    #   A is nxn matrix;
+    #   b is vector with size n
+    csp = dwavebinarycsp.ConstraintSatisfactionProblem('BINARY')
+
+    csp.add_constraint(
+        lambda a, b, c: all(np.array(
+            [a, b, c]
+        ).T.dot(np.random.rand(3, 3)) < np.random.rand(3)),
+        ['a', 'b', 'c'])
+
+    result_csp = qubo_proto.QSolver(
+        backend=qubo_proto.BACKEND_LOCAL_SIMULATOR
+    ).solve(
+        qubo_proto.PROBLEM_QUBO,
+        data=dwavebinarycsp.stitch(csp)  # getting BinaryQuadraticModel
+                                         # as input
+    )
+
+    assert csp.check(dict(zip(['a', 'b', 'c'], result_csp)))
