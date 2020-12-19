@@ -262,8 +262,17 @@ def test_constraint_satisfaction_problem():
         backend=qubo_proto.BACKEND_LOCAL_SIMULATOR
     ).solve(
         qubo_proto.PROBLEM_QUBO,
-        data=dwavebinarycsp.stitch(csp)  # getting BinaryQuadraticModel
-                                         # as input
+        data=dwavebinarycsp.stitch(csp),  # getting BinaryQuadraticModel
+                                          # as input
+        num_reads=5
     )
 
-    assert csp.check(dict(zip(['a', 'b', 'c'], result_csp)))
+    assert isinstance(result_csp, list)
+
+    if len(result_csp) > 1:
+        for s in result_csp:
+            assert type(
+                csp.check(dict(zip(['a', 'b', 'c'], s)))) == bool
+    else:
+        assert type(
+            csp.check(dict(zip(['a', 'b', 'c'], result_csp)))) == bool

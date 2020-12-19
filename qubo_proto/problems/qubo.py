@@ -38,13 +38,14 @@ class ProblemQUBO(ProblemSolver):
         """
         Solves the problem
         """
-        n_samples = kwargs.pop('n_samples', 1)
+        num_reads = kwargs.pop('num_reads', 1)
 
         sampler = self.backend.get_solver(qubo_proto.PROBLEM_QUBO)
 
         samples = sampler.sample(
-            self.prepare_model(*args, **kwargs)
-        ).samples(n=n_samples)
+            self.prepare_model(*args, **kwargs),
+            num_reads=num_reads
+        ).samples()
 
         solution = []
         for sample in samples:
