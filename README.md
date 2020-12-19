@@ -19,7 +19,7 @@ Features
 3. Can convert a basis from Ising to QUBO and vise versa
 4. Can solve Constraint Satisfaction Problem
 
-Quick start
+Quick Start
 -----------
 
 In terminal:
@@ -62,7 +62,7 @@ You should get a list like this as a solution:
 [1, 0, 0, 1, 1]
 ```
 
-More cases
+More Cases
 ----------
 
 ```python
