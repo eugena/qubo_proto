@@ -35,7 +35,7 @@ source .qubo/bin/activate
 pip install -r requirements_dev.txt
 ````
 
-Then fill tokens and endpoints in [dwave.conf](dwave.conf).
+Then fill **tokens** and **endpoints** in [dwave.conf](dwave.conf).
 
 
 Then:
