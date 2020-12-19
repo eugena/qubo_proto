@@ -12,11 +12,12 @@ Features
 --------
 1. Can use several backends:
     * Adiabatic quantum computer
-    * Quantum simulator
+    * Local quantum simulator
+    * Remote quantum simulator
     * Classic backend
 2. Can translate input into the QUBO basis
 3. Can convert a basis from Ising to QUBO and vise versa
-4. Can consider additional restrictions
+4. Can solve Constraint Satisfaction Problem
 
 Quick start
 -----------
@@ -60,6 +61,10 @@ You should get a list like this as a solution:
 ```python
 [1, 0, 0, 1, 1]
 ```
+
+More cases
+----------
+
 
 Testing
 -------

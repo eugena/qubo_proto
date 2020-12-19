@@ -13,7 +13,8 @@ Features
 #. Can use several backends:
 
   * Adiabatic quantum computer,
-  * Quantum simulator,
+  * Local quantum simulator,
+  * Remote quantum simulator,
   * Classic backend;
 
 #. Can translate input problems into the QUBO basis;
