@@ -17,5 +17,4 @@ dwavebinarycsp==0.1.2
 penaltymodel==0.16.4
 penaltymodel-cache==0.4.3
 penaltymodel-lp==0.1.4
-penaltymodel-maxgap==0.5.4
 penaltymodel-mip==0.2.4
