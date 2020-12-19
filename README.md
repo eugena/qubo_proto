@@ -94,12 +94,36 @@ result_s = qubo_proto.QSolver(
     data=model
 )
 
-# solution using classic backend
+# solution using Classic backend
 result_c = qubo_proto.QSolver(
     backend=qubo_proto.BACKEND_CLASSIC
 ).solve(
     qubo_proto.PROBLEM_QUBO,
     data=model
+)
+
+# Ising problem to QUBO
+h0 = {0: -1, 1: -1}
+J0 = {(0, 1): -1}
+
+Q, offset = dimod.ising_to_qubo(h0, J0, 0.5)
+
+result_qubo = qubo_proto.QSolver(
+    backend=qubo_proto.BACKEND_LOCAL_SIMULATOR
+).solve(
+    qubo_proto.PROBLEM_QUBO,
+    data=Q,
+    offset=offset
+)
+
+h, J, offset = dimod.qubo_to_ising(Q, offset)
+
+result_ising = qubo_proto.QSolver(
+    backend=qubo_proto.BACKEND_LOCAL_SIMULATOR
+).solve(
+    qubo_proto.PROBLEM_QUBO,
+    data=(h, J),
+    offset=offset
 )
 ```
 
