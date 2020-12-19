@@ -11,7 +11,7 @@ import dwavebinarycsp
 import qubo_proto
 
 
-def _test_backend_quantum():
+def test_backend_quantum():
     """
     Simple test function for QUANTUM backend
     """
@@ -147,7 +147,7 @@ def test_bqm():
     assert isinstance(result, list)
 
 
-def _test_results_is_equal():
+def test_results_is_equal():
     """
     Checks whether the results from different backends are equal
     """
