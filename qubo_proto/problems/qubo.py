@@ -18,7 +18,7 @@ class ProblemQUBO(ProblemSolver):
         """
         data = kwargs.pop('data')
 
-        model = data
+        model = None
 
         if isinstance(data, nx.Graph):
             model = dimod.BinaryQuadraticModel.from_networkx_graph(
@@ -31,6 +31,13 @@ class ProblemQUBO(ProblemSolver):
             model = dimod.BinaryQuadraticModel.from_ising(h, J, **kwargs)
         elif isinstance(data, dict):
             model = dimod.BinaryQuadraticModel.from_qubo(data, **kwargs)
+        elif isinstance(data, dimod.BinaryQuadraticModel):
+            model = data
+
+        if model is None:
+            raise NotImplementedError(f'Handling of input with type '
+                                      f'{type(data)} does not'
+                                      f' implemented yet')
 
         return model
 

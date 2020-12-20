@@ -94,6 +94,21 @@ def test_problem_unknown():
         assert isinstance(e, NotImplementedError)
 
 
+def test_data_unknown():
+    """
+    Simple test function for unknown input type
+    """
+    try:
+        qubo_proto.QSolver(
+            backend=qubo_proto.BACKEND_LOCAL_SIMULATOR
+        ).solve(
+            qubo_proto.PROBLEM_QUBO,
+            data='unknown'
+        )
+    except BaseException as e:
+        assert isinstance(e, NotImplementedError)
+
+
 def test_ising():
     """
     Simple test function for Ising problem
