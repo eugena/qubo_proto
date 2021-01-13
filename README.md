@@ -1,7 +1,7 @@
 QUBO solving prototype
 ======================
 
-[![License: GPL v3](https://img.shields.io/badge/license-GPL%20v3-blue.svg)](LICENSE)
+[![Maintainability](https://api.codeclimate.com/v1/badges/60d2c947e6695d9756e9/maintainability)](https://codeclimate.com/github/eugena/qubo_proto/maintainability)
 
 This is a prototype for solving [QUBO](https://en.wikipedia.org/wiki/Quadratic_unconstrained_binary_optimization) problem
 using several backends.
